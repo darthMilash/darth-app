@@ -1,0 +1,38 @@
+.post {
+    display: inline-block;
+    border: 3px solid rgba(2, 2, 2, 0.514);
+    margin: 5px;
+}
+
+.authorPost {
+    margin: 0 0 5px 5px;
+    display: inline;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.verified {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    padding: 0 0 15px 5px;
+    margin: 5px;
+    border: 3px solid rgb(1, 56, 1);
+    border-radius: 50%;
+    font-weight: bold;
+    color: rgb(1, 56, 1);
+}
+
+.contentPost {
+    border: 1px solid black;
+    width: 500px;
+    height: 100px;
+    margin: 5px;
+    padding: 5px 10px;
+    overflow: auto;
+}
+
+.datePost {
+    margin: 0 0 5px 5px;
+}
+
