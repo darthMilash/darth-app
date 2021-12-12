@@ -1,13 +1,14 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env'});
 
-const express = require('express'),
-    app = express(),
-    port = process.env.PORT || 3001
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3001;
+const domain = process.env.DOMAIN;
  
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send('Hello World');
 });
  
 app.listen(port, () => {
-    console.log('server started on ' + process.env.DOMAIN + ':' + port);
+    console.log('server started on ' + domain + ':' + port);
 });
