@@ -1,0 +1,38 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    container_name: darth-app_postgress
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+    volumes:
+      - ./tmp/db_data:/var/lib/postgresql/data
+    ports: 
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    container_name: darth-app_adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+      
+  app: 
+    image: "node:14"
+    container_name: darth-app_app
+    working_dir: /api
+    ports: 
+      - 4001:4001
+    volumes:
+      - .:/api
+    depends_on:
+      - db
+    command: "npm run start:dev"
+
+    
