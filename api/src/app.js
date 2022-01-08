@@ -1,13 +1,19 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+
+const config = require('./services/config')
+// const usersRoutes = require('./routes/users')
 
 const app = express()
-const port = process.env.PORT || 3001
-const domain = process.env.DOMAIN
 
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+const host = config.appHost
+const port = config.appPort
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json())
+
+// app.use('/users', usersRoutes)
 
 app.listen(port, () => {
-    console.log(`server started on ${domain}:${port}`)
+    console.log(`server started on http://${host}:${port}`)
 })
