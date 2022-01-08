@@ -1,4 +1,4 @@
-import './accPost.css';
+import "./accPost.css";
 
 export function AccPost({ authorPost, verified, content, date }) {
     return (
