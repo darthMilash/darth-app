@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 
 const config = require('./services/config')
 const usersRoutes = require('./routes/users')
+const postsRoutes = require('./routes/posts')
 
 const app = express()
 
@@ -13,7 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use('/users', usersRoutes)
+app.use('/posts', postsRoutes)
 
 app.listen(port, () => {
     console.log(`server started on http://${host}:${port}`)
 })
+
+// const date = new Date();
+// console.log(date.toLocaleString());
