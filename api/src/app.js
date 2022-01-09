@@ -5,6 +5,7 @@ const config = require('./services/config')
 const usersRoutes = require('./routes/users')
 const postsRoutes = require('./routes/posts')
 const commentsRoutes = require('./routes/comments')
+const likesRoutes = require('./routes/likes')
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use('/users', usersRoutes)
 app.use('/posts', postsRoutes)
 app.use('/comments', commentsRoutes)
+app.use('/likes', likesRoutes)
 
 app.listen(port, () => {
     console.log(`server started on http://${host}:${port}`)
