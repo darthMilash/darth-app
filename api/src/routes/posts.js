@@ -10,6 +10,26 @@ router.get('/:id', async (req, res) => {
     res.send(await db.select().from('post').where('postid', '=', postid))
 })
 
+router.get('/:id/likes', async (req, res) => {
+    const postLikesId = req.params.id
+    res.send(
+        await db
+            .select()
+            .from('userpostlikes')
+            .where('postid', '=', postLikesId)
+    )
+})
+
+router.get('/:id/comments', async (req, res) => {
+    const postCommentId = req.params.id
+    res.send(
+        await db
+            .select()
+            .from('userpostcomments')
+            .where('postid', '=', postCommentId)
+    )
+})
+
 router.post('/', async (req, res) => {
     const { userprofileid, content, hiddenlevel } = req.body
     const date = new Date().toLocaleString()
