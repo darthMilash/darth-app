@@ -19,6 +19,6 @@ export function AddDate() {
     }
     else 
     return (
-        <div>Error date format. Must be "yyyy-mm-dd"}</div>
+        <div>Error date format. Must be "yyyy-mm-dd"</div>
     );
 }
