@@ -1,3 +1,4 @@
+import React from 'react';
 import "./style.css"
 
 export function Profile({name, avatar, bday, email, phone}) {

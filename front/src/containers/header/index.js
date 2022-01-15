@@ -1,20 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 import "./style.css"
 
-export const HeaderContainer = ({ changePage }) => {
-
+export const Header = () => {
   return (
       <header>
-        <button className="clickMenu" onClick={() => 
-          changePage('articles')}> ARTICLES
-        </button>
-        <button className="clickMenu" onClick={() => 
-          changePage('addArticle')}>ADD ARTICLE
-        </button>
-        <button className="clickMenu" onClick={() => 
-          changePage('profile')}>PROFILE
-        </button>
+        <Link to='/articles'>
+        <button className="clickMenu"> ARTICLES </button>
+        </Link>
+
+        <Link to='/addArticle'>
+        <button className="clickMenu"> ADD ARTICLE </button>
+        </Link>
+
+        <Link to='/profile'>
+        <button className="clickMenu"> PROFILE </button>
+        </Link>
       </header>
   );
 };

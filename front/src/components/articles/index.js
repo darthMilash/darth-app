@@ -1,9 +1,8 @@
+import React from 'react';
+import { useParams } from "react-router-dom";
 import "./style.css"
 
-import { useParams } from "react-router-dom";
-
 export function Articles({authorPost, content, date}) {
-
   const params = useParams();
   
   return (
