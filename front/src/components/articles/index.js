@@ -35,6 +35,13 @@ export function Articles({authorPost, content, date}) {
       </div>
     );
   }
+  else if (id != null) {
+    return (
+      <main>
+        <h1>404<p>Not Found</p></h1>
+      </main>
+    )
+  }
     else {
       return (
         <div className="post">

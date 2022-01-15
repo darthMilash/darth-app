@@ -7,6 +7,7 @@ import { Main } from '../../components/mainPage';
 import { AddArticle } from '../../components/addArticle';
 import { Articles } from '../../components/articles';
 import { Profile } from '../../components/profile';
+import { AddDate } from '../../components/date';
 
 import "./style.css"
 
@@ -19,6 +20,7 @@ export const Body = () => {
       <Route path="/articles" element={ <Articles /> }/>
       <Route path="/articles/:id" element={ <Articles /> }/>
       <Route path="/addArticle" element={ <AddArticle /> }/>
+      <Route path="/date/:date" element={ <AddDate /> }/>
       <Route path="*" element={ <h1>404<p>Not Found</p></h1> }/>
       </Routes>  
   </main>
