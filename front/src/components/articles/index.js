@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./style.css"
 
-export function Articles({authorPost, content, date}) {
+const Articles = ({authorPost, content, date}) => {
   const { id } = useParams();
   const isNumber = /^\d+$/;
   const isUpperCase = /^[A-Z]+$/;
@@ -52,3 +53,16 @@ export function Articles({authorPost, content, date}) {
       );
     }
 };
+
+Articles.propTypes = {
+  authorPost: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
+
+};
+
+Articles.defaultProps = {
+
+};
+
+export default Articles;
