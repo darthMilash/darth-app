@@ -10,7 +10,7 @@ const Articles = ({article}) => {
   const isUpperCase = /^[A-Z]+$/;
   const isFile = /^\w+\.doc$|pdf$|jpeg$/;
   
-  if (isNumber.test(id) || isUpperCase.test(id) || isFile.test(id) || id == null) {
+  if (isNumber.test(id) || isUpperCase.test(id) || isFile.test(id)) {
     return (
       <div className="post">
       <div className="avatarPost">{article.user.avatar}</div>  
@@ -22,7 +22,7 @@ const Articles = ({article}) => {
       </div>
     );
   }
-  else if (id != null) {
+  else {
     return (
       <main>
         <h1>404<p>Not Found</p></h1>
