@@ -6,7 +6,6 @@ export function Main() {
     return (
       <main>  
       <img className="Header-logo" src={Logo} alt="Logo" />
-
       </main>    
     );
 };

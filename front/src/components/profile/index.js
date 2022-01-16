@@ -1,35 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Icon from '../../anonym.png';
+import ProfileProptype  from './proptypes';
+import ProfileProptypeDefault  from './proptypesDefault';
+
 import "./style.css"
 
-const Profile = ({name, avatar, bday, email, phone}) => {
+const Profile = ({user,testavatar}) => {
 
   const currentDate = new Date();
-  const dateBday = new Date(bday);
+  const dateBday = new Date(user.bday);
   const profileAge = Math.floor((currentDate-dateBday) / (1000*60*60*24*366)) ;
   
   return (
     <div className="profile">
-    <div className="avatar">{avatar}</div>
-    <div className="name">NAME: {name}</div>
+    <div className="avatar">{user.avatar} {testavatar}</div>
+    <div className="name">NAME: {user.name}</div>
     <div className="bday">AGE: {profileAge}</div>
-    <div className="email">EMAIL: {email}</div>
-    <div className="phone">PHONE: {phone}</div>
+    <div className="email">EMAIL: {user.email}</div>
+    <div className="phone">PHONE: {user.phone}</div>
     </div>
   );
 };
 
-Profile.propTypes = {
-  avatar: PropTypes.element,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  bday: PropTypes.string.isRequired
-};
+Profile.propTypes = ProfileProptype;
 
-Profile.defaultProps = {
-  avatar: <img className="defaultIcon" src={Icon} alt="Icon" />
-};
+Profile.defaultProps = ProfileProptypeDefault;
 
 export default Profile;

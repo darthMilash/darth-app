@@ -1,38 +1,24 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import PropTypes from 'prop-types';
+import ArticlesProptype  from './proptypes';
+import ArticlesProptypeDefault  from './proptypesDefault';
 import "./style.css"
 
-const Articles = ({authorPost, content, date}) => {
+const Articles = ({article}) => {
   const { id } = useParams();
   const isNumber = /^\d+$/;
   const isUpperCase = /^[A-Z]+$/;
   const isFile = /^\w+\.doc$|pdf$|jpeg$/;
   
-  if (isNumber.test(id)) {
+  if (isNumber.test(id) || isUpperCase.test(id) || isFile.test(id) || id == null) {
     return (
       <div className="post">
-      <div className="authorPost">AUTHOR: Darth Vader. PostId:{id} </div>
-      <div className="contentPost">Choose the dark side</div>
-      <div className="datePost">created: 15/01/21 </div>
-      </div>
-    );
-  }
-  else if (isUpperCase.test(id)) {
-    return (
-      <div className="post">
-      <div className="authorPost">AUTHOR: Darth Vader. PostId:{id} </div>
-      <div className="contentPost">Choose the dark side</div>
-      <div className="datePost">created: 15/01/21 </div>
-      </div>
-    );
-  }
-  else if (isFile.test(id)) {
-    return (
-      <div className="post">
-      <div className="authorPost">AUTHOR: Darth Vader. PostId:{id} </div>
-      <div className="contentPost">Choose the dark side</div>
-      <div className="datePost">created: 15/01/21 </div>
+      <div className="avatarPost">{article.user.avatar}</div>  
+      <div className="datePost">{article.createDate}</div>
+      <div className="authorPost">{article.user.name}#{article.user.userId}</div>
+      <div className="contentPost">{article.content}</div>
+      <div className="commentsPost">&#9998; {article.commentsCount}</div>
+      <div className="likesPost">&#9829; {article.likesCount}</div>
       </div>
     );
   }
@@ -43,26 +29,10 @@ const Articles = ({authorPost, content, date}) => {
       </main>
     )
   }
-    else {
-      return (
-        <div className="post">
-        <div className="authorPost">AUTHOR: {authorPost}</div>
-        <div className="contentPost">{content}</div>
-        <div className="datePost">created: {date}</div>
-        </div>
-      );
-    }
 };
 
-Articles.propTypes = {
-  authorPost: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+Articles.propTypes = ArticlesProptype;
 
-};
-
-Articles.defaultProps = {
-
-};
+Articles.defaultProps = ArticlesProptypeDefault;
 
 export default Articles;
