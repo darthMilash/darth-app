@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.css"
 
-export function AddArticle() {
+export const AddArticle = () => {
     return (
       <div className="post">
       <input type="text" name="content" placeholder="Write the post"></input>

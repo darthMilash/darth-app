@@ -1,17 +1,10 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
-import ArticlesProptype  from './proptypes';
-import ArticlesProptypeDefault  from './proptypesDefault';
+
+import ArticlesPropType  from '../propTypes/articlePropTypes';
 import "./style.css"
 
 const Articles = ({article}) => {
-  const { id } = useParams();
-  const isNumber = /^\d+$/;
-  const isUpperCase = /^[A-Z]+$/;
-  const isFile = /^\w+\.doc$|pdf$|jpeg$/;
-  
-  if (isNumber.test(id) || isUpperCase.test(id) || isFile.test(id)) {
-    return (
+      return (
       <div className="post">
       <div className="avatarPost">{article.user.avatar}</div>  
       <div className="datePost">{article.createDate}</div>
@@ -22,17 +15,7 @@ const Articles = ({article}) => {
       </div>
     );
   }
-  else {
-    return (
-      <main>
-        <h1>404<p>Not Found</p></h1>
-      </main>
-    )
-  }
-};
 
-Articles.propTypes = ArticlesProptype;
-
-Articles.defaultProps = ArticlesProptypeDefault;
+Articles.propTypes = ArticlesPropType;
 
 export default Articles;

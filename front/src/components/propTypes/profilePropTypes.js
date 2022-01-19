@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const ProfileProptype =  {
+const ProfilePropType =  {
     user: PropTypes.shape ({
         userId: PropTypes.number.isRequired,
         avatar: PropTypes.element,
@@ -11,4 +11,4 @@ const ProfileProptype =  {
     }).isRequired
 }
 
-export default ProfileProptype;
+export default ProfilePropType;

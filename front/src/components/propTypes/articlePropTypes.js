@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const ArticlesProptype =  {
+const ArticlesPropType =  {
     article: PropTypes.shape ({
         postId: PropTypes.number.isRequired,
         createDate: PropTypes.string.isRequired,
@@ -15,4 +15,4 @@ const ArticlesProptype =  {
     }).isRequired
 }
 
-export default ArticlesProptype;
+export default ArticlesPropType;

@@ -1,10 +1,9 @@
 import React from 'react';
-import ProfileProptype  from './proptypes';
-import ProfileProptypeDefault  from './proptypesDefault';
+import ProfilePropType  from '../propTypes/profilePropTypes';
 
 import "./style.css"
 
-const Profile = ({user,testavatar}) => {
+const Profile = ({user}) => {
 
   const currentDate = new Date();
   const dateBday = new Date(user.bday);
@@ -12,7 +11,7 @@ const Profile = ({user,testavatar}) => {
   
   return (
     <div className="profile">
-    <div className="avatar">{user.avatar} {testavatar}</div>
+    <div className="avatar">{user.avatar}</div>
     <div className="name">NAME: {user.name}</div>
     <div className="bday">AGE: {profileAge}</div>
     <div className="email">EMAIL: {user.email}</div>
@@ -21,8 +20,6 @@ const Profile = ({user,testavatar}) => {
   );
 };
 
-Profile.propTypes = ProfileProptype;
-
-Profile.defaultProps = ProfileProptypeDefault;
+Profile.propTypes = ProfilePropType;
 
 export default Profile;
