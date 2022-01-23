@@ -1,0 +1,78 @@
+.postList {
+    list-style: none; 
+    font: 14px;
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.postBox {
+    display: inline-block;
+    border: 3px solid rgba(2, 2, 2, 0.514);
+    margin: 5px;
+    
+}
+
+.postId {
+    position: relative;
+    display: block;
+    margin: 3px 1px;
+    background: #DAD2CA;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: .3s ease-out;
+    font-weight: bold;
+}
+.avatarPost {
+    margin: 10px 10px 0 5px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(2, 2, 2, 0.514);
+    display: flex;
+    float: left;
+    border-radius: 50%;
+}
+
+.authorPost {
+    margin: 20px 0 0 5px;
+    display: flex;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.datePost {
+    display: flex;
+    font-style: normal;
+    float:left; 
+    clear: left;
+}
+
+.contentPost {
+    border: 1px solid black;
+    width: 500px;
+    height: 100px;
+    margin: 5px;
+    padding: 5px 10px;
+    overflow: auto;
+}
+
+.commentsPost {
+    width: 40px;
+    height: 30px;
+    display: flex;
+    float: left;
+    margin: 5px;
+
+}
+
+.likesPost {
+    width: 40px;
+    height: 30px;
+    display: flex;
+    float: left;
+    margin: 5px 0px 5px 412px;
+}
+
+
+
+

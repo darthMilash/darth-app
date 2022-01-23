@@ -1,0 +1,46 @@
+.usersList {
+    list-style: none; 
+    font: 14px;
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.userNameId {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: #DAD2CA;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: .3s ease-out;
+    font-weight: bold;
+}
+
+.userNameId:hover {background: #E9E4E0;}
+
+.userNameId:hover:before {transform: rotate(360deg);}
+
+.userBox {
+    display: inline-block;
+    border: 2px solid rgba(2, 2, 2, 0.514);
+    width: 200px;
+    height: 100px;
+    margin: 5px;
+}
+
+.userAvatar {
+    position: relative;
+    display: block;
+    margin: 5px;
+    border: 2px solid rgba(2, 2, 2, 0.514);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+
+
+
+

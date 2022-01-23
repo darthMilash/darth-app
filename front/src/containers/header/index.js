@@ -18,6 +18,14 @@ export const Header = () => {
         <Link to='/profile'>
         <button className="clickMenu"> PROFILE </button>
         </Link>
+
+        <Link to='/users'>
+        <button className="clickMenu"> USERS LIST </button>
+        </Link>
+
+        <Link to='/posts'>
+        <button className="clickMenu"> POSTS </button>
+        </Link>
       </header>
   );
 };
