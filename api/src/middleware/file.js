@@ -2,14 +2,14 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, '../uploads/')
+        cb(null, 'uploads')
     },
     filename(req, file, cb) {
-        cb(null, `${new Date().toISOString()}-${file.originalname}`)
+        cb(null, `user#${req.params.id}-${file.originalname}`)
     },
 })
 
-const types = ['/uploads/png', '/uploads/jpeg', '/uploads/jpg']
+const types = ['image/png', 'image/jpeg', 'image/jpg']
 
 const fileFilter = (req, file, cb) => {
     if (types.includes(file.mimetype)) {

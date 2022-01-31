@@ -1,11 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
 const cors = require('cors')
 
 const config = require('./services/config')
 const usersRoutes = require('./routes/users')
-const uploadRoutes = require('./routes/upload')
 const postsRoutes = require('./routes/posts')
 const commentsRoutes = require('./routes/comments')
 const likesRoutes = require('./routes/likes')
@@ -21,7 +19,6 @@ app.use(express.json())
 app.use(cors({ origin: ['http://localhost:3000', 'http://localhost'] }))
 
 app.use('/users', usersRoutes)
-app.use('/upload', uploadRoutes)
 app.use('/posts', postsRoutes)
 app.use('/comments', commentsRoutes)
 app.use('/likes', likesRoutes)
@@ -29,6 +26,3 @@ app.use('/likes', likesRoutes)
 app.listen(port, () => {
     console.log(`server started on http://${host}:${port}`)
 })
-
-// const date = new Date();
-// console.log(date.toLocaleString());
