@@ -1,20 +1,14 @@
 const router = require('express').Router()
+const commentsService = require('../services/store/comments.service')
 const db = require('../services/db')
 
 router.get('/', async (req, res) => {
-    res.send(
-        await db.select().from('userpostcomments').orderBy('userpostcommentsid')
-    )
+    res.send(await commentsService.getAllComments())
 })
 
 router.get('/:id', async (req, res) => {
     const commentId = req.params.id
-    res.send(
-        await db
-            .select()
-            .from('userpostcomments')
-            .where('userpostcommentsid', '=', commentId)
-    )
+    res.send(await commentsService.getCommentId(commentId))
 })
 
 router.post('/', async (req, res) => {
