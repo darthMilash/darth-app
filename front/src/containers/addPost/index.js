@@ -1,12 +1,12 @@
 import React from "react";
 import ErrorBoundary from "../../components/ErrorBoundary";
 
-import { AddArticle } from "../../components/addArticle";
+import AddPost from "../../components/addPost";
 
-export const AddArticleContainer = () => {
+export const AddPostContainer = () => {
     return (
         <ErrorBoundary>
-            <AddArticle />
+            <AddPost />
         </ErrorBoundary>
     );
 }

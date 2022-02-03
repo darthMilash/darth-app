@@ -1,12 +1,9 @@
 import React from "react";
-import ErrorBoundary from "../../components/ErrorBoundary";
 import { Routes, Route } from "react-router-dom";
 
 import { Main } from "../../components/mainPage";
-import { AddArticleContainer } from "../addArticle";
-import { ArticlesContainer } from "../articles";
+import { AddPostContainer } from "../addPost";
 import { ProfileContainer } from "../profile";
-import { AddDate } from "../../components/date";
 import PostsListContainer from "../postsList";
 import UsersListContainer from "../usersList";
 import UserProfileContainer from "../userProfile";
@@ -53,29 +50,15 @@ export const Body = () => {
           }
         />
         <Route
-          path="/articles/:id"
+          path="/addPost"
           element={
-            <ArticlesContainer />
-          }
-        />
-        <Route
-          path="/addArticle"
-          element={
-            <AddArticleContainer />
+            <AddPostContainer />
           }
         />
         <Route
           path="/form"
           element={
             <FormContainer />
-          }
-        />
-        <Route
-          path="/date/:date"
-          element={
-            <ErrorBoundary>
-              <AddDate />
-            </ErrorBoundary>
           }
         />
         <Route

@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Button from '@mui/material/Button';
+import { TextField } from 'formik-mui';
 
 const UserForm = ({userData}) => {
     
@@ -23,11 +25,21 @@ const UserForm = ({userData}) => {
          {({errors}) =>
 
         <Form>
-            <div>Errors: {JSON.stringify(errors)}</div>
+            
             <Field type="text" name="name" />
             <Field type="email" name="email" />
             <Field type="text" name="age" />
-            <button type="submit">Save</button>
+
+            <div className="buttons">
+            <Button variant="outlined">Cancel</Button>
+                <Button variant="contained">Post</Button>
+                </div>
+            
+
+            <div className="errors">Errors: {JSON.stringify(errors)}</div>
+
+
+            
         </Form>
         }
         </Formik>

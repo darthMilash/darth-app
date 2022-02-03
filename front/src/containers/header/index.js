@@ -7,16 +7,12 @@ import "./style.css"
 export const Header = () => {
   return (
       <header>
-        <Link to='/articles'>
-        <button className="clickMenu"> ARTICLES </button>
-        </Link>
-
-        <Link to='/addArticle'>
-        <button className="clickMenu"> ADD ARTICLE </button>
+        <Link to='/addPost'>
+        <button className="clickMenu"> ADD POST </button>
         </Link>
 
         <Link to='/profile'>
-        <button className="clickMenu"> PROFILE </button>
+        <button className="clickMenu"> MY PROFILE </button>
         </Link>
 
         <Link to='/users'>
