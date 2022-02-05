@@ -1,11 +1,10 @@
 .post {
     display: inline-block;
     border: 3px solid rgba(2, 2, 2, 0.514);
-    width: 600px;
-    height: 500px;
 }
 
 .postForm {
+    height: 350px;
     padding: 20px;
     border: 3px solid black;
     background-color: #ffffff9f;

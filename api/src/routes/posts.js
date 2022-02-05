@@ -2,69 +2,93 @@ const router = require('express').Router()
 const db = require('../services/db')
 
 router.get('/', async (req, res) => {
-    res.send(await db.select().from('post').orderBy('postid'))
+    try {
+        res.status(200).json(await db.select().from('post').orderBy('postid'))
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.get('/:id', async (req, res) => {
-    const postid = req.params.id
-    res.send(await db.select().from('post').where('postid', '=', postid))
+    try {
+        const postid = req.params.id
+        res.status(200).json(
+            await db.select().from('post').where('postid', postid)
+        )
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.get('/:id/likes', async (req, res) => {
-    const postLikesId = req.params.id
-    res.send(
-        await db
-            .select()
-            .from('userpostlikes')
-            .where('postid', '=', postLikesId)
-    )
+    try {
+        const postid = req.params.id
+        res.status(200).json(
+            await db.select().from('userpostlikes').where('postid', postid)
+        )
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.get('/:id/comments', async (req, res) => {
-    const postCommentId = req.params.id
-    res.send(
-        await db
-            .select()
-            .from('userpostcomments')
-            .where('postid', '=', postCommentId)
-    )
+    try {
+        const postid = req.params.id
+        res.status(200).json(
+            await db.select().from('userpostcomments').where('postid', postid)
+        )
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.post('/', async (req, res) => {
-    const { userprofileid, content, hiddenlevel } = req.body
-    const date = new Date().toLocaleString()
-    await db
-        .insert({
-            userprofileid,
-            content,
-            datecreate: date,
-            likescount: 0,
-            commentscount: 0,
-            hiddenlevel,
-        })
-        .into('post')
-    res.send(`The post was created`)
+    try {
+        const { userprofileid, content, hiddenlevel } = req.body
+        const date = new Date().toLocaleString()
+        res.status(200).json(
+            await db
+                .insert({
+                    userprofileid,
+                    content,
+                    datecreate: date,
+                    likescount: 0,
+                    commentscount: 0,
+                    hiddenlevel,
+                })
+                .into('post')
+        )
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.put('/:id', async (req, res) => {
-    const { content, hiddenlevel } = req.body
-    const postid = req.params.id
-    const dateUpdate = new Date().toLocaleString()
-    await db('post')
-        .update({
-            content,
-            hiddenlevel,
-            dateupdate: dateUpdate,
-        })
-
-        .where('postid', '=', postid)
-    res.send(`The post "${postid}" updated succesful"`)
+    try {
+        const { content, hiddenlevel } = req.body
+        const postid = req.params.id
+        const dateUpdate = new Date().toLocaleString()
+        res.status(200).json(
+            await db('post')
+                .update({
+                    content,
+                    hiddenlevel,
+                    dateupdate: dateUpdate,
+                })
+                .where('postid', postid)
+        )
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.delete('/:id', async (req, res) => {
-    const postid = req.params.id
-    await db('post').delete().where('postid', '=', postid)
-    res.send(`The post "${postid}" deleted succesful`)
+    try {
+        const postid = req.params.id
+        res.status(200).json(await db('post').delete().where('postid', postid))
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 module.exports = router

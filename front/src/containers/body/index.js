@@ -11,6 +11,7 @@ import PostsContainer from "../post/";
 
 import "./style.css";
 import { NotFound } from "../../components/errors/notFound";
+import UpdPostContainer from "../updPost";
 
 
 
@@ -53,6 +54,12 @@ export const Body = () => {
           path="/addPost"
           element={
             <AddPostContainer />
+          }
+        />
+        <Route
+          path="/posts/:id/update"
+          element={
+            <UpdPostContainer />
           }
         />
         <Route
