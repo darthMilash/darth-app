@@ -11,7 +11,7 @@ import PostsContainer from "../post/";
 
 import "./style.css";
 import { NotFound } from "../../components/errors/notFound";
-import FormContainer from "../form";
+
 
 
 export const Body = () => {
@@ -53,12 +53,6 @@ export const Body = () => {
           path="/addPost"
           element={
             <AddPostContainer />
-          }
-        />
-        <Route
-          path="/form"
-          element={
-            <FormContainer />
           }
         />
         <Route

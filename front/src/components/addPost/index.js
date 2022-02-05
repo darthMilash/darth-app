@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useMutation } from 'react-query';
 import { Button, Box } from "@mui/material";
 import { TextField } from "formik-mui";
 import { addPost, updatePost } from "../../containers/post/api/crud";
@@ -14,20 +15,26 @@ const AddPost = () => {
   const initialState = {
   userprofileid: 5,
   content: "",
-  hlevel: 1,
+  hiddenlevel: 1,
 };
+
+const mutation = useMutation((data) =>
+addPost(data)
+);
 
 
   const schema = Yup.object().shape({
+    userprofileid: Yup.number().required().positive().integer(),
     content: Yup.string().required("Field is empty!"),
-    hlevel: Yup.number("Age must be a number")
-      .required("Age is required!")
-      .positive("Age must be > 0")
+    hiddenlevel: Yup.number()
+      .required()
+      .positive()
       .integer(),
   });
 
   const onFormSubmit = async (values) => {
-    alert(JSON.stringify(values));
+    alert("Post add with values:" + JSON.stringify(values));
+    mutation.mutate(values)
   };
   return (
     <Formik
@@ -37,6 +44,7 @@ const AddPost = () => {
     >
       {({ values, submitForm, resetForm, isSubmitting, errors }) => (
         <Form>
+          <div className="postForm">
           <Box width={500}>
             <Field
               component={TextField}
@@ -52,18 +60,18 @@ const AddPost = () => {
           </Box>
           <div>Hidden Level Post</div>
           <label>
-            <Field type="radio" name="hlevel" value="1" />
+            <Field type="radio" name="hiddenlevel" value="1" />
             Only me
           </label>
           <label>
-            <Field type="radio" name="hlevel" value="2" />
+            <Field type="radio" name="hiddenlevel" value="2" />
             Friends
           </label>
           <label>
-            <Field type="radio" name="hlevel" value="3" />
+            <Field type="radio" name="hiddenlevel" value="3" />
             All
           </label>
-          <div>Hidden Level: {values.hlevel}</div>
+          <div>Hidden Level: {values.hiddenlevel}</div>
           <div className="buttons">
             <Button
               sx={{ margin: "10px 5px" }}
@@ -87,6 +95,7 @@ const AddPost = () => {
             </Button>
           </div>
           <div className="errors">Errors: {JSON.stringify(errors)}</div>
+          </div>
         </Form>
       )}
     </Formik>
