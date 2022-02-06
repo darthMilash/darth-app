@@ -12,6 +12,7 @@ import PostsContainer from "../post/";
 import "./style.css";
 import { NotFound } from "../../components/errors/notFound";
 import UpdPostContainer from "../updPost";
+import EditProfileContainer from "../editProfile";
 
 
 
@@ -60,6 +61,12 @@ export const Body = () => {
           path="/posts/:id/update"
           element={
             <UpdPostContainer />
+          }
+        />
+        <Route
+          path="/users/:id/update"
+          element={
+            <EditProfileContainer />
           }
         />
         <Route

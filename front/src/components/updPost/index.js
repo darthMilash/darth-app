@@ -10,6 +10,7 @@ import PostPropType from '../propTypes/postPropType';
 
 const UpdPost = ({post}) => {
   
+  
   const schema = Yup.object().shape({
     content: Yup.string().required("Field is empty!"),
     hiddenlevel: Yup.number()
@@ -18,14 +19,16 @@ const UpdPost = ({post}) => {
       .integer(),
   });
 
-  const initialState = {
-  content: post?.content,
-  hiddenlevel: post?.hiddenlevel
-};
+
 
 const mutation = useMutation((data) =>
 updatePost(post[0].postid, data)
 );
+
+const initialState = {
+  content: post?.content,
+  hiddenlevel: post?.hiddenlevel || 1
+};
 
   const onFormSubmit = async (values) => {
     alert("Post add with values:" + JSON.stringify(values));

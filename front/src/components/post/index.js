@@ -9,27 +9,27 @@ const Post = ({ post }) => {
 
 
 
-  
+
   return (
     <div className="postForm">
       {post?.map(
         ({ postid, content, datecreate, commentscount, likescount }) => (
           <div key={postid}>
-          <Box className="headerPost" sx={{ height: 90, backgroundColor: "#c8e4fb" }}>
-            <Stack direction="row">
-            <Avatar alt="Avatar" className="avatar" src="/src/anonym.png" sx={{ width: 56, height: 56, margin: '10px' }}/>
-            <div className="authorPost" >POST#{postid}   </div>
-            <div className="authorPost"><Link to={`/posts/${postid}/update`}>
-                {" "}
-                &#9998; Edit{" "}
-              </Link>
-              </div>
-            </Stack>
+            <Box className="headerPost" sx={{ height: 90 }}>
+              <Stack direction="row">
+                <Avatar alt="Avatar" className="avatar" src="/src/anonym.png" sx={{ width: 56, height: 56, margin: '10px' }} />
+                <div className="authorPost" >POST#{postid}   </div>
+                <div className="authorPost"><Link to={`/posts/${postid}/update`}>
+                  {" "}
+                  &#9998; Edit{" "}
+                </Link>
+                </div>
+              </Stack>
             </Box>
             <div className="contentBlock">
-            <Box sx={{ height: 150, margin: "10px"}}>
-              {content}
-            </Box>
+              <Box sx={{ height: 150, margin: "10px" }}>
+                {content}
+              </Box>
             </div>
             <div className="commentsPost">
               <Link to={`/posts/${postid}/comments`}>
@@ -39,6 +39,9 @@ const Post = ({ post }) => {
             </div>
             <div className="likesPost">
               <Link to={`/posts/${postid}/likes`}> &#9829; {likescount} </Link>
+            </div>
+            <div className="dateCreate">
+              was created: {datecreate}
             </div>
           </div>
         )
