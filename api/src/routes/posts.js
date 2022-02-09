@@ -1,49 +1,47 @@
 const router = require('express').Router()
 const db = require('../services/db')
+const asyncHandler = require('../middleware/asyncHandler')
 
-router.get('/', async (req, res) => {
-    try {
+router.get(
+    '/',
+    asyncHandler(async (req, res) => {
         res.status(200).json(await db.select().from('post').orderBy('postid'))
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.get('/:id', async (req, res) => {
-    try {
+router.get(
+    '/:id',
+    asyncHandler(async (req, res) => {
         const postid = req.params.id
         res.status(200).json(
             await db.select().from('post').where('postid', postid)
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.get('/:id/likes', async (req, res) => {
-    try {
+router.get(
+    '/:id/likes',
+    asyncHandler(async (req, res) => {
         const postid = req.params.id
         res.status(200).json(
             await db.select().from('userpostlikes').where('postid', postid)
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.get('/:id/comments', async (req, res) => {
-    try {
+router.get(
+    '/:id/comments',
+    asyncHandler(async (req, res) => {
         const postid = req.params.id
         res.status(200).json(
             await db.select().from('userpostcomments').where('postid', postid)
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.post('/', async (req, res) => {
-    try {
+router.post(
+    '/',
+    asyncHandler(async (req, res) => {
         const { userprofileid, content, hiddenlevel } = req.body
         const date = new Date().toLocaleString()
         res.status(200).json(
@@ -58,13 +56,12 @@ router.post('/', async (req, res) => {
                 })
                 .into('post')
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.put('/:id', async (req, res) => {
-    try {
+router.put(
+    '/:id',
+    asyncHandler(async (req, res) => {
         const { content, hiddenlevel } = req.body
         const postid = req.params.id
         const dateUpdate = new Date().toLocaleString()
@@ -77,18 +74,15 @@ router.put('/:id', async (req, res) => {
                 })
                 .where('postid', postid)
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.delete('/:id', async (req, res) => {
-    try {
+router.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
         const postid = req.params.id
         res.status(200).json(await db('post').delete().where('postid', postid))
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
 module.exports = router

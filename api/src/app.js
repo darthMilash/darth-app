@@ -7,6 +7,8 @@ const usersRoutes = require('./routes/users')
 const postsRoutes = require('./routes/posts')
 const commentsRoutes = require('./routes/comments')
 const likesRoutes = require('./routes/likes')
+const logger = require('./middleware/logger')
+const errorHandler = require('./middleware/errorHandler')
 
 const app = express()
 
@@ -17,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use(cors({ origin: ['http://localhost:3000', 'http://localhost'] }))
+app.use(errorHandler)
+app.use(logger)
 
 app.use('/users', usersRoutes)
 app.use('/posts', postsRoutes)

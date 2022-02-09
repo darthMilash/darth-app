@@ -1,25 +1,25 @@
 const router = require('express').Router()
 const commentsService = require('../services/store/comments.service')
+const asyncHandler = require('../middleware/asyncHandler')
 
-router.get('/', async (req, res) => {
-    try {
+router.get(
+    '/',
+    asyncHandler(async (req, res) => {
         res.status(200).json(await commentsService.getAllComments())
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.get('/:id', async (req, res) => {
-    try {
+router.get(
+    '/:id',
+    asyncHandler(async (req, res) => {
         const commentId = req.params.id
         res.status(200).json(await commentsService.getCommentId(commentId))
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.post('/', async (req, res) => {
-    try {
+router.post(
+    '/',
+    asyncHandler(async (req, res) => {
         const { userprofileid, postid, content, maincomment } = req.body
         const date = new Date().toLocaleString()
         res.status(200).json(
@@ -31,31 +31,27 @@ router.post('/', async (req, res) => {
                 maincomment,
             })
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.put('/:id', async (req, res) => {
-    try {
+router.put(
+    '/:id',
+    asyncHandler(async (req, res) => {
         const { content } = req.body
         const commentId = req.params.id
         const dateUpdate = new Date().toLocaleString()
         res.status(200).json(
             await commentsService.putComment({ commentId, content, dateUpdate })
         )
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
-router.delete('/:id', async (req, res) => {
-    try {
+router.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
         const commentId = req.params.id
         res.status(200).json(await commentsService.delCommentId(commentId))
-    } catch (error) {
-        res.send(error)
-    }
-})
+    })
+)
 
 module.exports = router
