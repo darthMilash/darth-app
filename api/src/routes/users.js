@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const path = require('path')
 const db = require('../services/db')
-const fileMiddleware = require('../middleware/file')
-const asyncHandler = require('../middleware/asyncHandler')
+const fileMiddleware = require('../middlewares/file')
+const asyncHandler = require('../asyncHandler')
 
 router.get(
     '/',

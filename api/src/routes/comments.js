@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const commentsService = require('../services/store/comments.service')
-const asyncHandler = require('../middleware/asyncHandler')
+const asyncHandler = require('../asyncHandler')
 
 router.get(
     '/',

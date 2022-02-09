@@ -7,8 +7,9 @@ const usersRoutes = require('./routes/users')
 const postsRoutes = require('./routes/posts')
 const commentsRoutes = require('./routes/comments')
 const likesRoutes = require('./routes/likes')
-const logger = require('./middleware/logger')
-const errorHandler = require('./middleware/errorHandler')
+const logger = require('./middlewares/logger')
+const errorHandler = require('./middlewares/errorHandler')
+const db = require('./services/db')
 
 const app = express()
 
@@ -19,13 +20,25 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use(cors({ origin: ['http://localhost:3000', 'http://localhost'] }))
-app.use(errorHandler)
-app.use(logger)
+
+app.use(
+    logger({
+        db,
+        table: config.logsTable,
+    })
+)
 
 app.use('/users', usersRoutes)
 app.use('/posts', postsRoutes)
 app.use('/comments', commentsRoutes)
 app.use('/likes', likesRoutes)
+
+app.use(
+    errorHandler({
+        db,
+        table: config.logsTable,
+    })
+)
 
 app.listen(port, () => {
     console.log(`server started on http://${host}:${port}`)
