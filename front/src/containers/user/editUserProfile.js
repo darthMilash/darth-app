@@ -3,10 +3,10 @@ import { useQuery } from 'react-query';
 import { getUserProfile } from "./api/crud";
 import { useParams } from "react-router-dom";
 import ErrorBoundary from "../../components/ErrorBoundary";
-import UserProfile from "../../components/userProfile";
+import EditUserProfile from "../../components/user/editUserProfile";
 
 
-const UserProfileContainer = () => {
+const EditUserProfileContainer = () => {
 const { id } = useParams();
 
 
@@ -17,10 +17,10 @@ const { id } = useParams();
         <ErrorBoundary>
         <div>
          {isFetching && <div> Loading...</div>}
-         <UserProfile user={user} />
+         <EditUserProfile user={user} />
         </div>
         </ErrorBoundary>
     );
 }
 
-export default UserProfileContainer;
+export default EditUserProfileContainer;

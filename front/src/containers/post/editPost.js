@@ -3,24 +3,24 @@ import { useQuery } from 'react-query';
 import { getPost } from "./api/crud";
 import { useParams } from "react-router-dom";
 import ErrorBoundary from "../../components/ErrorBoundary";
-import Post from "../../components/post";
+import EditPost from "../../components/post/editPost";
 
 
-const PostContainer = () => {
+const EditPostContainer = () => {
     const { id } = useParams();
     
     
         const { isFetching, data } = useQuery(`posts/${id}`, () => getPost(id));
-        const post = data?.data;
+        const post = data?.data || [];
         
         return (
             <ErrorBoundary>
             <div>
              {isFetching && <div> Loading...</div>}
-             <Post post={post} />
+             <EditPost post={post} />
             </div>
             </ErrorBoundary>
         );
     }
     
-    export default PostContainer;
+    export default EditPostContainer;

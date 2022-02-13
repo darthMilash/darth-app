@@ -4,14 +4,16 @@ import * as Yup from "yup";
 import { useMutation } from 'react-query';
 import { Button, Box } from "@mui/material";
 import { TextField } from "formik-mui";
-import { updatePost } from "../../containers/post/api/crud";
+import { addPost } from "../../containers/post/api/crud";
 import PostPropType from '../propTypes/postPropType'; 
 
+import "./style.css";
 
-const UpdPost = ({post}) => {
-  
-  
+
+const AddPost = () => {
+
   const schema = Yup.object().shape({
+    userprofileid: Yup.number().required().positive().integer(),
     content: Yup.string().required("Field is empty!"),
     hiddenlevel: Yup.number()
       .required()
@@ -19,32 +21,27 @@ const UpdPost = ({post}) => {
       .integer(),
   });
 
+  const initialState = {
+    userprofileid: 5,
+    content: "",
+    hiddenlevel: 1,
+  };
 
-
-const mutation = useMutation((data) =>
-updatePost(post[0].postid, data)
-);
-
-const initialState = {
-  content: post?.content,
-  hiddenlevel: post?.hiddenlevel || 1
-};
+  const mutation = useMutation((data) =>
+    addPost(data)
+  );
 
   const onFormSubmit = async (values) => {
     alert("Post add with values:" + JSON.stringify(values));
-    mutation.mutate({
-      content: values.content,
-      hiddenlevel: values.hiddenlevel
-    })
+    mutation.mutate(values)
   };
-
   return (
     <Formik
       initialValues={initialState}
       onSubmit={onFormSubmit}
       validationSchema={schema}
     >
-      {({ values, submitForm, resetForm, isSubmitting, errors }) => (
+      {({ values, submitForm, resetForm, isSubmitting}) => (
         <Form>
           <div className="postForm">
           <Box width={500}>
@@ -93,7 +90,7 @@ const initialState = {
               disabled={isSubmitting}
               onClick={submitForm}
             >
-              Edit
+              Post
             </Button>
           </div>
           </div>
@@ -103,6 +100,6 @@ const initialState = {
   );
 };
 
-UpdPost.propTypes = PostPropType;
+AddPost.propTypes = PostPropType;
 
-export default UpdPost;
+export default AddPost;

@@ -1,35 +1,35 @@
-.postList {
-    list-style: none; 
-    font: 14px;
-    padding: 0;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+.post {
+    display: inline-block;
+    border: 3px solid rgba(2, 2, 2, 0.514);
+}
+
+.postForm {
+    height: 350px;
+    padding: 20px;
+    border: 3px solid black;
+    background-color: #ffffff9f;
+    color:rgba(2, 2, 2, 0.514);
+    font-weight: bold;
+}
+
+.posts {
+    height: 350px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 3px solid black;
+    background-color: #ffffff9f;
+    color:rgba(2, 2, 2, 0.514);
+    font-weight: bold;
 }
 
 .postBox {
     display: inline-block;
     border: 3px solid rgba(2, 2, 2, 0.514);
     margin: 5px;
-    
 }
 
-.postId {
-    position: relative;
-    display: block;
-    margin: 3px 1px;
-    background: #DAD2CA;
-    color: #444;
-    text-decoration: none;
-    border-radius: .3em;
-    transition: .3s ease-out;
-    font-weight: bold;
-}
 .avatar {
     border: 1px solid rgba(2, 2, 2, 0.514);
-
-}
-
-.authorPost {
-
 }
 
 .datePost {
@@ -37,6 +37,11 @@
     font-style: normal;
     float:left; 
     clear: left;
+}
+
+.contentBlock {
+    border: 1px solid rgba(2, 2, 2, 0.514);
+    border-radius: 3%;
 }
 
 .contentPost {
@@ -47,6 +52,7 @@
     padding: 5px 10px;
     overflow: auto;
 }
+
 
 .commentsPost {
     width: 40px;
@@ -65,10 +71,13 @@
     margin: 5px 0px 5px 412px;
 }
 
-.contentBlock {
-    border: 1px solid rgba(2, 2, 2, 0.514);
-    border-radius: 3%;
+.authorPost {
+    margin: 20px 0 0 5px;
+    display: flex;
+    font-weight: bold;
+    font-style: normal;
 }
+
 
 
 

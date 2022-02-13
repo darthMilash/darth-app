@@ -2,7 +2,7 @@ import React from "react";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import { useQuery } from 'react-query';
 import { getUsersList } from "./api/crud";
-import  UsersList  from "../../components/usersList";
+import  UsersList  from "../../components/user/usersList";
 
 
 const UsersListContainer = () => {

@@ -19,7 +19,7 @@ const Post = ({ post }) => {
               <Stack direction="row">
                 <Avatar alt="Avatar" className="avatar" src="/src/anonym.png" sx={{ width: 56, height: 56, margin: '10px' }} />
                 <div className="authorPost" >POST#{postid}   </div>
-                <div className="authorPost"><Link to={`/posts/${postid}/update`}>
+                <div className="authorPost"><Link to={`/posts/${postid}/edit`}>
                   {" "}
                   &#9998; Edit{" "}
                 </Link>

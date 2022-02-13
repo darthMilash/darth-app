@@ -2,17 +2,16 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { Main } from "../../components/mainPage";
-import { AddPostContainer } from "../addPost";
-import { ProfileContainer } from "../profile";
-import PostsListContainer from "../postsList";
-import UsersListContainer from "../usersList";
-import UserProfileContainer from "../userProfile";
-import PostsContainer from "../post/";
+import { AddPostContainer } from "../post/addPost";
+import PostsListContainer from "../post/posts";
+import UsersListContainer from "../user/usersList";
+import UserProfileContainer from "../user/userProfile";
+import PostContainer from "../post/userPost";
 
 import "./style.css";
 import { NotFound } from "../../components/errors/notFound";
-import UpdPostContainer from "../updPost";
-import EditProfileContainer from "../editProfile";
+import EditPostContainer from "../post/editPost";
+import EditUserProfileContainer from "../user/editUserProfile";
 
 
 
@@ -22,12 +21,6 @@ export const Body = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route
-          path="/profile"
-          element={
-            <ProfileContainer />
-          }
-        />
-        <Route
           path="/posts"
           element={
             <PostsListContainer />
@@ -36,7 +29,7 @@ export const Body = () => {
         <Route
           path="/posts/:id"
           element={
-            <PostsContainer />
+            <PostContainer />
           }
         />
         <Route
@@ -58,15 +51,15 @@ export const Body = () => {
           }
         />
         <Route
-          path="/posts/:id/update"
+          path="/posts/:id/edit"
           element={
-            <UpdPostContainer />
+            <EditPostContainer />
           }
         />
         <Route
-          path="/users/:id/update"
+          path="/users/:id/edit"
           element={
-            <EditProfileContainer />
+            <EditUserProfileContainer />
           }
         />
         <Route

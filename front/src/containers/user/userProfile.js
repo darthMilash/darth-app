@@ -1,26 +1,26 @@
 import React from "react";
 import { useQuery } from 'react-query';
-import { getProfile } from "./api/crud";
+import { getUserProfile } from "./api/crud";
 import { useParams } from "react-router-dom";
 import ErrorBoundary from "../../components/ErrorBoundary";
-import EditProfile from "../../components/editProfile";
+import UserProfile from "../../components/user/userProfile";
 
 
-const EditProfileContainer = () => {
+const UserProfileContainer = () => {
 const { id } = useParams();
 
 
-    const { isFetching, data } = useQuery(`users/${id}`, () => getProfile(id));
+    const { isFetching, data } = useQuery(`users/${id}`, () => getUserProfile(id));
     const user = data?.data;
     
     return (
         <ErrorBoundary>
         <div>
          {isFetching && <div> Loading...</div>}
-         <EditProfile user={user} />
+         <UserProfile user={user} />
         </div>
         </ErrorBoundary>
     );
 }
 
-export default EditProfileContainer;
+export default UserProfileContainer;

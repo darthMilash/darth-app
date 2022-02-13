@@ -1,29 +1,32 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Button, Box } from "@mui/material";
+import { Button, Avatar, Stack } from "@mui/material";
 import { TextField } from "formik-mui";
-import { editProfile } from "../../containers/editProfile/api/crud";
+import { editUserProfile } from "../../containers/user/api/crud";
 import { useMutation } from 'react-query';
 
 import "./style.css"
 
-const EditProfile = ({user}) => {
+const EditUserProfile = ({user}) => {
+
+
 
   const schema = Yup.object().shape({
 		name: Yup.string().required('Required field!'),
     email: Yup.string().email('Incorrect email').required('Required field!'),
-		phone: Yup.string().matches(10, '+380')
+		phone: Yup.string()
 	});
 
   const initialState = {
-    name: user?.name,
-    phone: user?.phone,
-    email: user?.email,
+    name: user[0].name,
+    phone: user[0].phone,
+    email: user[0].email,
+    avatar: user[0].avatar,
   };
 
   const mutation = useMutation((data) =>
-  editProfile(post[0].userprofileid, data)
+      editUserProfile(user[0].userprofileid, data)
 );
 
 const onFormSubmit = async (values) => {
@@ -32,6 +35,7 @@ const onFormSubmit = async (values) => {
     name: values.name,
     email: values.email,
     phone: values.phone,
+    avatar: values.avatar
   })
 };
   
@@ -43,8 +47,10 @@ const onFormSubmit = async (values) => {
     >
       {({ submitForm, resetForm, isSubmitting }) => (
         <Form>
-          <div className="postForm">
-          <Box width={500}>
+          <div className="userProfileForm">
+          <Stack sx={{ margin: "0 0 0 65px"}}>
+            <Avatar alt="Avatar" className="avatar" sx={{ width: 300, height: 300, margin: '10px' }} />
+            <div className="inputField">
             <Field
               component={TextField}
               helperText="Please Enter Name"
@@ -52,7 +58,11 @@ const onFormSubmit = async (values) => {
               label="Name"
               name="name"
               margin="normal"
+              fullWidth
+              multiline
             />
+            </div>
+            <div className="inputField">
             <Field
               component={TextField}
               helperText="Please Enter Email"
@@ -60,7 +70,11 @@ const onFormSubmit = async (values) => {
               label="email"
               name="email"
               margin="normal"
+              fullWidth
+              multiline
             />
+            </div>
+            <div className="inputField">
             <Field
               component={TextField}
               helperText="Please Enter Phone in formay "
@@ -68,8 +82,11 @@ const onFormSubmit = async (values) => {
               label="phone"
               name="phone"
               margin="normal"
+              fullWidth
+              multiline
             />
-          </Box>
+            </div>
+          </Stack>
 
           <div className="buttons">
             <Button
@@ -102,4 +119,4 @@ const onFormSubmit = async (values) => {
 
 // Profile.propTypes = ProfilePropType;
 
-export default EditProfile;
+export default EditUserProfile;

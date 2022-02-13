@@ -11,10 +11,6 @@ export const Header = () => {
         <button className="clickMenu"> ADD POST </button>
         </Link>
 
-        <Link to='/profile'>
-        <button className="clickMenu"> MY PROFILE </button>
-        </Link>
-
         <Link to='/users'>
         <button className="clickMenu"> USERS LIST </button>
         </Link>

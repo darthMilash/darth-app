@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from 'react-query';
 import { getPostsList } from "./api/crud";
 import ErrorBoundary from "../../components/ErrorBoundary";
-import PostsList from "../../components/postsList";
+import PostsList from "../../components/post/posts";
 
 
 const PostsListContainer = () => {
