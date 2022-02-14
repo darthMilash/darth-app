@@ -7,7 +7,8 @@ const UserProfilePropType = {
             name: PropTypes.string,
             avatar: PropTypes.string,
             email: PropTypes.string,
-            phone: PropTypes.string
+            phone: PropTypes.string,
+            usereducationid: PropTypes.number
         })
     ),
 };

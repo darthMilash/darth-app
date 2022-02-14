@@ -1,10 +1,11 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Button, Avatar, Stack } from "@mui/material";
 import { TextField } from "formik-mui";
 import { editUserProfile } from "../../containers/user/api/crud";
 import { useMutation } from 'react-query';
+import FormikAutocomplete from "../FormikAutocomplete";
 
 import "./style.css"
 
@@ -29,13 +30,20 @@ const EditUserProfile = ({user}) => {
       editUserProfile(user[0].userprofileid, data)
 );
 
+  const options = [
+    { value: '1', label: 'СумДУ' },
+    { value: '2', label: 'СумГПУ им А.С.Макаренка' },
+    { value: '3', label: 'СНАУ' }
+  ]
+
 const onFormSubmit = async (values) => {
   alert("User edit with values:" + JSON.stringify(values));
   mutation.mutate({
     name: values.name,
     email: values.email,
     phone: values.phone,
-    avatar: values.avatar
+    avatar: values.avatar,
+    usereducationid:  values.usereducationid,
   })
 };
   
@@ -85,6 +93,9 @@ const onFormSubmit = async (values) => {
               fullWidth
               multiline
             />
+            </div>
+            <div>
+              <Field component={FormikAutocomplete} name="usereducationid" label="University" options={options} />
             </div>
           </Stack>
 

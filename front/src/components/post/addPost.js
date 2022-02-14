@@ -1,11 +1,12 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useMutation } from 'react-query';
 import { Button, Box } from "@mui/material";
 import { TextField } from "formik-mui";
 import { addPost } from "../../containers/post/api/crud";
-import PostPropType from '../propTypes/postPropType'; 
+import PostPropType from '../propTypes/postPropType';
+import FormikAutocomplete from "../FormikAutocomplete";
 
 import "./style.css";
 
@@ -24,7 +25,6 @@ const AddPost = () => {
   const initialState = {
     userprofileid: 5,
     content: "",
-    hiddenlevel: 1,
   };
 
   const mutation = useMutation((data) =>
@@ -35,6 +35,13 @@ const AddPost = () => {
     alert("Post add with values:" + JSON.stringify(values));
     mutation.mutate(values)
   };
+
+  const options = [
+    { value: '1', label: 'Only me' },
+    { value: '2', label: 'My friends' },
+    { value: '3', label: 'All' }
+  ]
+
   return (
     <Formik
       initialValues={initialState}
@@ -58,19 +65,25 @@ const AddPost = () => {
             />
           </Box>
           <div>Hidden Level Post</div>
-          <label>
-            <Field type="radio" name="hiddenlevel" value="1" />
-            Only me
-          </label>
-          <label>
-            <Field type="radio" name="hiddenlevel" value="2" />
-            Friends
-          </label>
-          <label>
-            <Field type="radio" name="hiddenlevel" value="3" />
-            All
-          </label>
-          <div>Hidden Level: {values.hiddenlevel}</div>
+          {/*<label>*/}
+          {/*  <Field type="radio" name="hiddenlevel" value="1" />*/}
+          {/*  Only me*/}
+          {/*</label>*/}
+          {/*<label>*/}
+          {/*  <Field type="radio" name="hiddenlevel" value="2" />*/}
+          {/*  Friends*/}
+          {/*</label>*/}
+          {/*<label>*/}
+          {/*  <Field type="radio" name="hiddenlevel" value="3" />*/}
+          {/*  All*/}
+          {/*</label>*/}
+
+
+          <div>
+            <Field component={FormikAutocomplete} name="hiddenlevel" label="Visible to" options={options} />
+          </div>
+            <div>Hidden Level: {values.hiddenlevel}</div>
+
           <div className="buttons">
             <Button
               sx={{ margin: "10px 5px" }}

@@ -1,11 +1,12 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useMutation } from 'react-query';
 import { Button, Box } from "@mui/material";
 import { TextField } from "formik-mui";
 import { editPost } from "../../containers/post/api/crud";
-import PostPropType from '../propTypes/postPropType'; 
+import PostPropType from '../propTypes/postPropType';
+import FormikAutocomplete from "../FormikAutocomplete";
 
 
 const EditPost = ({post}) => {
@@ -25,7 +26,6 @@ const mutation = useMutation((data) =>
 
 const initialState = {
   content: post[0].content,
-  hiddenlevel: post[0].hiddenlevel
 };
 
   const onFormSubmit = async (values) => {
@@ -36,13 +36,19 @@ const initialState = {
     })
   };
 
+  const options = [
+    { value: '1', label: 'Only me' },
+    { value: '2', label: 'My friends' },
+    { value: '3', label: 'All' }
+  ]
+
   return (
     <Formik
       initialValues={initialState}
       onSubmit={onFormSubmit}
       validationSchema={schema}
     >
-      {({ values, submitForm, resetForm, isSubmitting, errors }) => (
+      {({ values, submitForm, resetForm, isSubmitting }) => (
         <Form>
           <div className="postForm">
           <Box width={500}>
@@ -59,19 +65,10 @@ const initialState = {
             />
           </Box>
           <div>Hidden Level Post</div>
-          <label>
-            <Field type="radio" name="hiddenlevel" value="1" />
-            Only me
-          </label>
-          <label>
-            <Field type="radio" name="hiddenlevel" value="2" />
-            Friends
-          </label>
-          <label>
-            <Field type="radio" name="hiddenlevel" value="3" />
-            All
-          </label>
-          <div>Hidden Level: {values.hiddenlevel}</div>
+            <div>
+              <Field component={FormikAutocomplete} name="hiddenlevel" label="Visible to" options={options} />
+            </div>
+            <div>Hidden Level: {values.hiddenlevel}</div>
           <div className="buttons">
             <Button
               sx={{ margin: "10px 5px" }}

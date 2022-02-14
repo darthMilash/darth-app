@@ -2,6 +2,7 @@ import React from 'react';
 import UserProfilePropType from '../propTypes/userProfilePropTypes';
 import {Stack, Avatar, Box} from "@mui/material";
 
+
 import "./style.css"
 import { Link } from "react-router-dom";
 
