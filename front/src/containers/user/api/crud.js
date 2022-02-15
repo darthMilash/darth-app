@@ -11,3 +11,7 @@ export const getUsersList = async () => {
 export const editUserProfile = async (id, data) => {
     return apiClient.put(`/users/${id}`, data);
 }
+
+export const editUserAvatar = async (id, data) => {
+    return apiClient.post(`/users/${id}/avatar`, data);
+}

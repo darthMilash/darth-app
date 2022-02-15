@@ -65,20 +65,6 @@ const AddPost = () => {
             />
           </Box>
           <div>Hidden Level Post</div>
-          {/*<label>*/}
-          {/*  <Field type="radio" name="hiddenlevel" value="1" />*/}
-          {/*  Only me*/}
-          {/*</label>*/}
-          {/*<label>*/}
-          {/*  <Field type="radio" name="hiddenlevel" value="2" />*/}
-          {/*  Friends*/}
-          {/*</label>*/}
-          {/*<label>*/}
-          {/*  <Field type="radio" name="hiddenlevel" value="3" />*/}
-          {/*  All*/}
-          {/*</label>*/}
-
-
           <div>
             <Field component={FormikAutocomplete} name="hiddenlevel" label="Visible to" options={options} />
           </div>
